@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <math.h>
+
+double division(double, double);
+double modulus(int , int);
+void print();
+
+int main()
+{
+    int select;
+    double first, second, result;//As we are intaking only two numbers and performing th eoperation.
+    printf("Welcome to our simple calculator.");
+
+    while(1){
+        print();
+        scanf("%d", &select);
+        if(select == 7) break;
+        if(select > 7 || select < 1) {
+            fprintf(stderr, "invalid menu selected");
+            continue;
+        }
+
+        printf("\nPLease enter the first number: ");
+        scanf("%lf", &first);
+        printf("\nGood!, Now enter second number: ");
+        scanf("%lf", &second);
+
+        switch (select)
+        {
+        case 1:
+        result = first + second;
+        break;
+        case 2:
+        result = first - second; 
+        break;
+        case 3:
+        result = division(first, second);
+        break;
+        case 4:
+        result = first * second;
+        break;
+        case 5:
+        result = modulus(first, second);
+        break;
+        case 6:
+        result = pow(first, second);
+        break;
+        
+
+        }
+        if(!isnan(result)){
+        printf("\nResult of the following operation is = %.2f", result);
+        }
+        printf("\nThanks for using our calculator!!!");
+        printf("\nDeveloped by Bharat lalwani.");
+        
+}
+
+}
+double division(double a, double b){
+    if(b == 0){
+        fprintf(stderr, "invalid argument for Division");
+        return NAN;
+
+    } else {
+        return a / b;
+    }
+}
+double modulus(int a, int b){
+    if(b == 0){
+        fprintf(stderr, "invalid argument for Modulus");
+        return NAN;
+    } else {
+        return a % b;
+    }
+}
+
+void print(){
+    printf("\n\n 1.Add");
+    printf("\n 2.Substact");
+    printf("\n 3.Divide");
+    printf("\n 4.Multiply");
+    printf("\n 5.Modulus");
+    printf("\n 6.Power");
+    printf("\n 7.exit");
+    printf("\n NOw please select one of the option: ");
+
+    
+}
